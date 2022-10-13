@@ -58,12 +58,10 @@ class Management(Auth):
 
 
     def get_port_info(port):
-
         build = "show interface ethernet " + port
 
         data = {"cmd": build}
         data= json.dumps(data)
-
-    	response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
+        response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
 
     	return response.json()

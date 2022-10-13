@@ -61,7 +61,6 @@ class Management(Auth):
 
         data = {"cmd": "show running"}
         data= json.dumps(data)
-
-    	response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
+        response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
 
     	return response.json()
