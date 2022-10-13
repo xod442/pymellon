@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Module for testing the functions in pypheus.monitoring.
+Module for testing the functions in pymellon ports.
 """
 
 import os
@@ -13,32 +13,31 @@ urllib3.disable_warnings()
 import json
 import requests
 
-from pypheus.network import Network
-from pypheus.storage import Storage
-from pypheus.logs import Logs
-from pypheus.monitoring import Monitoring
+from pymellon.command import Command
+from pymellon.management import Management
+from pymellon.ports import Ports
 
 host = os.environ['HOST']
 username = os.environ['USERNAME']
 password = os.environ['PASSWORD']
 
-test = Monitoring(host,username,password)
+test = Ports(host,username,password)
 
 SKIPTEST=True
 
 #TODO TAKE OUT HARDCODED DATA LATER
 my_vcr = vcr.VCR(
     serializer='json',
-    cassette_library_dir='./test_pyhpecfm/fixtures/cassettes',
+    cassette_library_dir='./test_pymellon/fixtures/cassettes',
     record_mode='new_episodes',
     match_on=['uri', 'method'],
 )
 
 class Monitoring(TestCase):
     """
-    Test Case for pypheus.monitoring functions
+    Test Case for pymellon.monitoring functions
     """
-    @vcr.use_cassette(cassette_library_dir='./test_pypheus/fixtures/cassettes')
+    @vcr.use_cassette(cassette_library_dir='./test_pymellon/fixtures/cassettes')
 
     def test_get_all_checks(self):
         """
