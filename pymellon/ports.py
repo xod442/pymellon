@@ -62,4 +62,4 @@ class Management(Auth):
         data = {"cmd": build}
         data= json.dumps(data)
         response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
-    return response.json()
+        return response.json()
