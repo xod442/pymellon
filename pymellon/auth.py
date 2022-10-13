@@ -57,7 +57,6 @@ class Auth(object):
         }
 
         data= json.dumps(data)
-
         response = s.post(url,params=params,headers=headers,data=data)
         client_dict = s.cookies.get_dict()
         session_key = client_dict['session']
