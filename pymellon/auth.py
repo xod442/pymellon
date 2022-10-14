@@ -55,7 +55,7 @@ class Auth(object):
           'username': self.username,
           'password': self.password
         }
-
+        s = requests.Session()
         data= json.dumps(data)
         response = s.post(url,params=params,headers=headers,data=data)
         client_dict = s.cookies.get_dict()
