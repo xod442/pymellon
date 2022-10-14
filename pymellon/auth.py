@@ -55,9 +55,11 @@ class Auth(object):
           'username': self.username,
           'password': self.password
         }
+
+        self.url = 'http://'+self.host+'/admin/launch'
         s = requests.Session()
         data= json.dumps(data)
-        response = s.post(url,params=params,headers=headers,data=data)
+        response = s.post(self.url,params=params,headers=headers,data=data)
         client_dict = s.cookies.get_dict()
         session_key = client_dict['session']
         key = 'session=' + session_key
