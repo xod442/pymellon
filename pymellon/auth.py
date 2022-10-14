@@ -45,21 +45,25 @@ class Auth(object):
         self.password = password
         self.host = host
 
-        params = {
+        self.params = {
             'script': 'rh',
             'template': 'json-request',
             'action': 'json-login',
         }
 
-        data = {
+        self.data = {
           'username': self.username,
           'password': self.password
+        }
+
+        self.headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
         }
 
         self.url = 'http://'+self.host+'/admin/launch'
         s = requests.Session()
         data= json.dumps(data)
-        response = s.post(self.url,params=params,headers=headers,data=data)
+        response = s.post(self.url,params=self.params,self.headers=headers,data=self.data)
         client_dict = s.cookies.get_dict()
         session_key = client_dict['session']
         key = 'session=' + session_key
