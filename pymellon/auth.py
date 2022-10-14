@@ -56,13 +56,14 @@ class Auth(object):
           'password': self.password
         }
 
+        self.data= json.dumps(self.data)
+
         self.headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
         }
 
         self.url = 'http://'+self.host+'/admin/launch'
         s = requests.Session()
-        data= json.dumps(data)
         response = s.post(self.url,params=self.params,headers=self.headers,data=self.data)
         client_dict = s.cookies.get_dict()
         session_key = client_dict['session']
