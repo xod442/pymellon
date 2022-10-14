@@ -23,8 +23,7 @@ m = Management('10.132.0.76','admin','admin')
 info = m.get_running_config()
 
 info = json.loads(info)
-print(type(info))
-print(info['data']['Lines'])
+
 lines = info['data']['Lines']
 for line in lines:
     print(line)

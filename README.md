@@ -16,16 +16,15 @@ returned when you make a request.
 **Note** :you will need to import pymellon into your python script.
 
 ```
-from pymellon.command import Command
+m = Management('10.132.0.76','admin','admin')
 
-# Create an instance of the command class, pass credentials
-cmd = Command(host,username,password)
+info = m.get_running_config()
 
-# Call the API
+info = json.loads(info)
 
-comm = 'show interfaces'
-
-info = cmd.send_command(comm)
+lines = info['data']['Lines']
+for line in lines:
+    print(line)
 
 ```
 
