@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: pymellon
-Version: 0.2.13
+Version: 0.2.15
 Summary: A python binding to work with the Mellanox API
 Home-page: https://github.com/xod442/pymellon
-Download-URL: https://github.com/xod442/pymellon/archive/refs/tags/v.0.2.13.tar.gz
+Download-URL: https://github.com/xod442/pymellon/archive/refs/tags/v.0.2.15.tar.gz
 Author: Rick Kauffman
 Author-email: rick@rickkauffman.com
 Keywords: mellanox,api,python

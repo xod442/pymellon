@@ -54,13 +54,13 @@ class Command(Auth):
             'script': 'json',
         }
 
-        self.endpoint ='https://' + host +  '/admin/launch'
+        self.endpoint ='http://' + host +  '/admin/launch'
 
 
     def send_command(self, command):
+        self.data = {"cmd": command}
+        self.data= json.dumps(self.data)
 
-        data = {"cmd": command}
-        data= json.dumps(data)
-        response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
+        response = requests.post(self.endpoint,params=self.params,headers=self.headers,data=self.data)
 
-        return response.json()
+        return response.text

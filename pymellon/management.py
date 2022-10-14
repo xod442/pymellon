@@ -54,13 +54,13 @@ class Management(Auth):
             'script': 'json',
         }
 
-        self.endpoint ='https://' + host +  '/admin/launch'
+        self.endpoint ='http://' + host +  '/admin/launch'
 
 
-    def get_running_config():
+    def get_running_config(self):
 
-        data = {"cmd": "show running"}
-        data= json.dumps(data)
-        response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
+        self.data = {"cmd": "show running"}
+        self.data= json.dumps(self.data)
+        response = requests.post(self.endpoint,params=self.params,headers=self.headers,data=self.data)
 
-        return response.json()
+        return response.text

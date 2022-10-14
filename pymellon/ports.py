@@ -36,7 +36,7 @@ from pymellon.auth import Auth
 import json
 import requests
 
-class Management(Auth):
+class Ports(Auth):
 
     def __init__(
             self, host,
@@ -54,12 +54,13 @@ class Management(Auth):
             'script': 'json',
         }
 
-        self.endpoint ='https://' + host +  '/admin/launch'
+        self.endpoint ='http://' + host +  '/admin/launch'
 
 
-    def get_port_info(port):
+    def get_port_info(self, port):
+
         build = "show interface ethernet " + port
-        data = {"cmd": build}
-        data= json.dumps(data)
-        response = requests.get(self.endpoint,headers=self.headers,data=self.data,verify=False)
-        return response.json()
+        self.data = {"cmd": build}
+        self.data= json.dumps(self.data)
+        response = requests.post(self.endpoint,params=self.params,headers=self.headers,data=self.data)
+        return response.text
